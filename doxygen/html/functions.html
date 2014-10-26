@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ArduinoViz Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AppBuilder
    &#160;<span id="projectnumber">2.0rc1</span>
@@ -76,6 +77,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
+      <li><a href="functions_vars.html"><span>Variables</span></a></li>
     </ul>
   </div>
 </div><!-- top -->
@@ -98,7 +100,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,6 +125,12 @@ $(document).ready(function(){initNavTree('functions.html','');});
 </li>
 <li>AppBuilder()
 : <a class="el" href="class_app_builder.html#a8e5cd755fa5555a73b84589da4fccb21">AppBuilder</a>
+</li>
+<li>attempts
+: <a class="el" href="structhandshake__informations.html#a728e648cbfb9fb7a1cf1bc97493a976c">handshake_informations</a>
+</li>
+<li>callback
+: <a class="el" href="structcallback__dictionary.html#ae5bf2254961e10c73b9ef12dbab36440">callback_dictionary</a>
 </li>
 <li>end_layout()
 : <a class="el" href="class_app_builder.html#a1dcca0da629856a7e4567a7633d87b3b">AppBuilder</a>
@@ -154,7 +162,7 @@ $(document).ready(function(){initNavTree('functions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 26 2014 14:22:19 for AppBuilder by
+    <li class="footer">Generated on Sun Oct 26 2014 15:20:38 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

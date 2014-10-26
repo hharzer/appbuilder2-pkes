@@ -117,7 +117,7 @@ public:
      * @brief Sets the function that's called when you're successfully connection
      * @details This includes performing the handshake. Nothing will happen if the AppBuilder::handshake wasn't successful
      *
-     * @param onc The function that will be called on connection. typdef ::gen_callback
+     * @param onc The function that will be called on connection.
      */
     void set_onconnect(gen_callback onc);
 

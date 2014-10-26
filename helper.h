@@ -21,14 +21,14 @@ typedef void (*gen_callback)(uid8, char *);
 //! Structure to save callbacks by id
 struct callback_dictionary
 {
-    uid8 *id;
-    gen_callback *callback;
-};
+    uid8 *id; //! The id of the element
+    gen_callback *callback; //! The corresponding callback
+}; 
 
 //! Informations for the handshake
 struct handshake_informations {
-	char* phrase;
-	byte attempts;
+	char* phrase; //! The actual handshake phrase
+	byte attempts; //! Num of attempts
 };
 
 #endif
