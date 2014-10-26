@@ -15,6 +15,8 @@ There are several features still to be implemented like creating diagrams and se
 
 The library was designed to be as straighforward as possible, so all names should be self-explanatory and easy to understand. Nonetheless, a tutorial on how to use the library will beneift your understanding.
 
+**Please refrain from using Serial while also using the client software.**
+
 ## Getting started
 
 ### Initializing
