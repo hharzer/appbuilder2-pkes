@@ -1,4 +1,4 @@
-#include "AppBuilder.h"
+#include <AppBuilder.h>
 
 AppBuilder appb(12, 5, String("AVH\0"), 2048);
 
@@ -33,11 +33,9 @@ void onconnect (uid8 id, char *unwichtig)
     t2 = appb.add_label();
     uid8 b3 = appb.add_button();
     uid8 b2 = appb.add_button();
-    uid8 l2 = appb.start_layout();
     uid8 t1 = appb.add_input();
     uid8 b = appb.add_button();
     b4 = appb.add_label();
-    appb.end_layout(l2);
     appb.end_layout(l);
 
     appb.send_components();

@@ -1,0 +1,74 @@
+\hyperlink{class_app_builder}{App\+Builder} is a library that's designed to communicate with a compatible counterpart, e.\+g. a computer, an android phone or even another arduino handset.
+
+Currently supported are the following functions\+:
+\begin{DoxyItemize}
+\item Connection detection (disconnction detection isn't currently supported due to restriction from arduino's serial library)
+\item Handshake to ensure that you're connected to a compatible and trustworhty counterpart
+\item Building layouts and sending them (You can nested layouts etc. The view, though, depends on your counterpart)
+\item Setting, receiving and executing callback for both buttons and textinputs (the latter also receives the string that as inside the textinput)
+\item Setting text
+\end{DoxyItemize}
+
+There are several features still to be implemented like creating diagrams and sending data continously. The latter can be emulated by sending text.
+
+\section*{Usage}
+
+The library was designed to be as straighforward as possible, so all names should be self-\/explanatory and easy to understand. Nonetheless, a tutorial on how to use the library will beneift your understanding.
+
+\subsection*{Getting started}
+
+\subsubsection*{Initializing}
+
+\hyperlink{class_app_builder}{App\+Builder}'s constructor is defined as follows\+:
+
+
+\begin{DoxyCode}
+\hyperlink{class_app_builder}{AppBuilder}(byte num\_com, byte num\_callbacks, String handshake, \textcolor{keywordtype}{int} attempts);
+\end{DoxyCode}
+
+
+The arguments explained\+:
+\begin{DoxyItemize}
+\item {\ttfamily num\+\_\+com} is the {\itshape number of components} you want to use
+\item {\ttfamily num\+\_\+callbacks} is the {\itshape number of callbacks} you want to use
+\item {\ttfamily handshake} is the {\itshape handshake phrase} that's used to connect to a counterpart
+\item {\ttfamily attempts} is the {\itshape number of attempts} made at doing a handshake
+\end{DoxyItemize}
+
+An exmaple for initializing your \hyperlink{class_app_builder}{App\+Builder} object would look like this\+:
+
+
+\begin{DoxyCode}
+\hyperlink{class_app_builder}{AppBuilder} appb(12, 5, String(\textcolor{stringliteral}{"AVH\(\backslash\)0"}), 2048);
+\end{DoxyCode}
+
+
+You can store {\itshape 12} components that have {\itshape 5} callbacks. The connection phrase would be {\itshape A\+V\+H} (Arduino\+Viz\+Handshake) and the number for attempts {\itshape 2048}.
+
+Next thing you need would be a function that's called when you're connected. That's probably your first encounter with {\ttfamily gen\+\_\+callback}. It will be explained later on.
+
+The signature of {\ttfamily gen\+\_\+callback} is defined as follows\+: 
+\begin{DoxyCode}
+\textcolor{keyword}{typedef} void (*gen\_callback)(uid8, \textcolor{keywordtype}{char} *);
+\end{DoxyCode}
+
+
+Since there's no uid or character array involved, you can safely ignore both arguments. When your function gets called, you'll be able to create your layout.
+
+\subsubsection*{Building a layout}
+
+\subsection*{Setting properties}
+
+\subsubsection*{Setting the text of somehting}
+
+\subsection*{Setting and receiving callbacks}
+
+\subsubsection*{Setting callbacks}
+
+\subsubsection*{Receiving callbacks and handling them}
+
+\section*{Callbacks explained}
+
+\subsection*{When to expect them}
+
+\section*{General sequence of events}
