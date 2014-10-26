@@ -3,9 +3,7 @@
 
 #include "arduino.h"
 
-
-
-//! Typedef for an universial id 
+//! Typedef for an universial id
 typedef unsigned char uid8;
 
 //! Simplification
@@ -23,12 +21,13 @@ struct callback_dictionary
 {
     uid8 *id; //! The id of the element
     gen_callback *callback; //! The corresponding callback
-}; 
+};
 
 //! Informations for the handshake
-struct handshake_informations {
-	char* phrase; //! The actual handshake phrase
-	byte attempts; //! Num of attempts
+struct handshake_informations
+{
+    char *phrase; //! The actual handshake phrase
+    byte attempts; //! Num of attempts
 };
 
 #endif

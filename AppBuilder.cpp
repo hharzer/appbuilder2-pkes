@@ -11,7 +11,8 @@ AppBuilder::AppBuilder(byte num_com, byte _num_callback, String handshake, int _
     current_cursor = 0;
 
     components = new int[num_components];
-    for (byte i = 0; i < num_components; i++) {
+    for (byte i = 0; i < num_components; i++)
+    {
         components[i] = 0;
     }
 
@@ -55,7 +56,7 @@ void AppBuilder::execute_callbacks()
                 callbacks.callback[index](first_id, serial_buffer);
                 if (already_one_executed)
                     return; // if one callback was already executed, both now should've been executed, thus making it unneccessary to check other callbacks
-                already_one_executed = 1; 
+                already_one_executed = 1;
             }
             if (callbacks.id[index] == second_id)
             {
@@ -119,7 +120,7 @@ void AppBuilder::serial_event()
 
             // additional processing to capture the string that was sent
 
-            temp_c = 0; 
+            temp_c = 0;
             flush_buffer(serial_buffer, 32); //prepare buffer
             delay(2); // wait for serial buffer(arduino) to get ready again
             while (Serial.available())
@@ -128,7 +129,9 @@ void AppBuilder::serial_event()
                 {
                     serial_buffer[temp_c] = Serial.read(); //save character in buffer
                     temp_c++;
-                } else {
+                }
+                else
+                {
                     return;
                 }
                 delay(2); // wait for serial to get ready again
@@ -208,14 +211,14 @@ void AppBuilder::refresh()
 void AppBuilder::send_components()
 {
 
-    char temp_compoment [3]; // Save a component (type, id) and terminate it with a \0 
+    char temp_compoment [3]; // Save a component (type, id) and terminate it with a \0
 
     temp_compoment[0] = '#'; //Start of protocol
     temp_compoment[1] = '\0';//current_cursor + 48; //Num of components // Obsolete because of change
     temp_compoment[2] = '\0'; //End
     Serial.print(temp_compoment);
 
-    for (int i = 0; i < current_cursor;i ++) //For each component
+    for (int i = 0; i < current_cursor; i ++) //For each component
     {
         temp_compoment[0] = (components[i] >> 8); //Type
         temp_compoment[1] =  components[i];//ID
@@ -273,7 +276,8 @@ uid8 AppBuilder::add_label()
     return add_component('T');
 }
 
-uid8 AppBuilder::set_text(uid8 id, char* text) {
+uid8 AppBuilder::set_text(uid8 id, char *text)
+{
     Serial.print('+');
     Serial.print(id);
     Serial.print(text);
