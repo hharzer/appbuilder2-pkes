@@ -57,7 +57,18 @@ Currently, there are four different UI elements available:
 * Text input
 The last two offer a callback functionality which will be explained later on. For now, though, we want to create an UI and send it to the counterpart.
 
-First of all, we need a layout that acts as a container 
+First of all, we need a layout that acts as a container for the UI. The layout also specifies how all elements are sorted and arranged. However, the client organizes this for now. After we created a layout, we can add other components such as buttons and label. There's also the possibily of nesting layout to group and arrange them.
+
+~~~~~~~~~~~~~~~{.cpp}
+uid8 l = appb.start_layout();
+t2 = appb.add_label();
+uid8 b3 = appb.add_button();
+uid8 b2 = appb.add_button();
+uid8 t1 = appb.add_input();
+uid8 b = appb.add_button();
+b4 = appb.add_label();
+appb.end_layout(l);
+~~~~~~~~~~~~~~~
 
 ## Setting properties
 
