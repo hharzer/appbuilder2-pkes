@@ -57,18 +57,118 @@ Since there's no uid or character array involved, you can safely ignore both arg
 
 \subsubsection*{Building a layout}
 
+Currently, there are four different U\+I elements available\+:
+\begin{DoxyItemize}
+\item Layout
+\item Label
+\item Button
+\item Text input
+\end{DoxyItemize}
+
+The last two offer a callback functionality which will be explained later on. For now, though, we want to create an U\+I and send it to the counterpart.
+
+First of all, we need a layout that acts as a container for the U\+I. The layout also specifies how all elements are sorted and arranged. However, the client organizes this for now. After we created a layout, we can add other components such as buttons and label. There's also the possibily of nesting layout to group and arrange them.
+
+
+\begin{DoxyCode}
+uid8 l = appb.start\_layout();
+t2 = appb.add\_label();
+uid8 b3 = appb.add\_button();
+uid8 b2 = appb.add\_button();
+uid8 t1 = appb.add\_input();
+uid8 b = appb.add\_button();
+b4 = appb.add\_label();
+appb.end\_layout(l);
+\end{DoxyCode}
+
+
+Since you want to change properties and add callbacks later, you need to save all uids of component you want to modify. All function that add components to the layout will return the uid of the created element if it was successfull, otherwise ( for example when you've already added the specified amount of components ) it will return 0.
+
+Also, you probably noticed that, when you call {\ttfamily end\+\_\+layout}, you have to pass a uid, namely the one of the layout you actually want to close.
+
+After you created all components and saved all necessary uids, you can send them\+:
+
+
+\begin{DoxyCode}
+appb.send\_components();
+\end{DoxyCode}
+
+
 \subsection*{Setting properties}
 
 \subsubsection*{Setting the text of somehting}
 
+To change the text of any component (except the layout, everyone has a caption), you simply need to call {\ttfamily set\+\_\+text} and pass the uid and the text.
+
+A call could look like this\+:
+
+
+\begin{DoxyCode}
+appb.set\_text(t2, \textcolor{stringliteral}{"Sample Text 1"});
+appb.set\_text(b, \textcolor{stringliteral}{"on"});
+appb.set\_text(b2, \textcolor{stringliteral}{"off"});
+appb.set\_text(b3, \textcolor{stringliteral}{"Sample Text 2"});
+appb.set\_text(b4, \textcolor{stringliteral}{"Sample Text 3"});
+\end{DoxyCode}
+
+
 \subsection*{Setting and receiving callbacks}
 
-\subsubsection*{Setting callbacks}
+To be able to react to callbacks, you need to assign ceratin components certain function.
 
-\subsubsection*{Receiving callbacks and handling them}
+To set such a function, it is important to comply to {\ttfamily gen\+\_\+callback}. The arguments are the id of the element that initiated the callback and a possible character array with the contents of an input. A function may look like this\+:
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{void} turn\_on(uid8 \textcolor{keywordtype}{id}, \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string})
+\{
+    digitalWrite(13, HIGH);
+\}
+
+\textcolor{keywordtype}{void} turn\_off(uid8 \textcolor{keywordtype}{id}, \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string})
+\{
+    digitalWrite(13, LOW);
+\}
+\end{DoxyCode}
+
+
+As you probably noticed, this functions toggle the built-\/in led. we want to assign them to the buttons labeled {\itshape on} and {\itshape off}. Their ids are stored in {\ttfamily b} and {\ttfamily b2}.
+
+
+\begin{DoxyCode}
+appb.add\_callback(b, turn\_on);
+appb.add\_callback(b2, turn\_off);
+\end{DoxyCode}
+
+
+Now, when you click the corresponding buttons you'll notice that you can now turn the led on and off. A text callback would look similarly\+:
+
+
+\begin{DoxyCode}
+\textcolor{keywordtype}{void} text\_callback(uid8 \textcolor{keywordtype}{id}, \textcolor{keywordtype}{char} *\textcolor{keywordtype}{string})
+\{
+    appb.set\_text(b4, \textcolor{keywordtype}{string});
+\}
+\end{DoxyCode}
+
+
+Keep in mind that the passed string is only valid within your callback. It is possible that it gets invalidated after leaving the function.
+
+
+\begin{DoxyCode}
+appb.add\_callback(t1, text\_callback);
+\end{DoxyCode}
+
 
 \section*{Callbacks explained}
 
+You need to be aware of certain facts regarding callback handling. One of them was already mentioned above\+: strings are only valid wihtin the function. But there are other things you have to keep in mind.
+
 \subsection*{When to expect them}
 
+Callbacks can only be recognized when you're arduino executes {\ttfamily serial\+\_\+event}. Because of that, there's the possibility that callbacks get dropped if your computation take too long and you're sending too many callbacks from the client.
+
+ The callback stack can hold up to {\itshape two} callbacks at the same time.
+
 \section*{General sequence of events}
+
