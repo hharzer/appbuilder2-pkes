@@ -208,10 +208,10 @@ void AppBuilder::refresh()
 void AppBuilder::send_components()
 {
 
-    char temp_compoment [3]; /*!< Save a component (type, id) and terminate it with a \0  */
+    char temp_compoment [3]; // Save a component (type, id) and terminate it with a \0 
 
     temp_compoment[0] = '#'; //Start of protocol
-    temp_compoment[1] = '\0';//current_cursor + 48; //Num of components
+    temp_compoment[1] = '\0';//current_cursor + 48; //Num of components // Obsolete because of change
     temp_compoment[2] = '\0'; //End
     Serial.print(temp_compoment);
 

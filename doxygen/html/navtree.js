@@ -1,7 +1,6 @@
 var NAVTREE =
 [
   [ "AppBuilder", "index.html", [
-    [ "Introduction", "md___users_holgerharzer__git_hub_appbuilder_documentation_appb_intro.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],

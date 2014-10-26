@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['introduction',['Introduction',['../md___users_holgerharzer__git_hub_appbuilder_documentation_appb_intro.html',1,'']]]
+  ['refresh',['refresh',['../class_app_builder.html#ac96ab83cc3c1b78a3512946cbc2e79af',1,'AppBuilder']]]
 ];
