@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>AppBuilder: Introduction</title>
+<title>AppBuilder: At first</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ArduinoViz Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AppBuilder
    &#160;<span id="projectnumber">2.0rc1</span>
@@ -78,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('md___users_holgerharzer__git_hub_appbuilder_documentation_introduction.html','');});
+$(document).ready(function(){initNavTree('md_documentation_installation.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('md___users_holgerharzer__git_hub_appbu
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -97,49 +98,57 @@ $(document).ready(function(){initNavTree('md___users_holgerharzer__git_hub_appbu
 
 <div class="header">
   <div class="headertitle">
-<div class="title">Introduction </div>  </div>
+<div class="title">At first </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="class_app_builder.html">AppBuilder</a> is a library that's designed to communicate with a compatible counterpart, e.g. a computer, an android phone or even another arduino handset.</p>
-<p>Currently supported are the following functions:</p><ul>
-<li>Connection detection (disconnction detection isn't currently supported due to restriction from arduino's serial library)</li>
-<li>Handshake to ensure that you're connected to a compatible and trustworhty counterpart</li>
-<li>Building layouts and sending them (You can nested layouts etc. The view, though, depends on your counterpart)</li>
-<li>Setting, receiving and executing callback for both buttons and textinputs (the latter also receives the string that as inside the textinput)</li>
-<li>Setting text</li>
+<div class="textblock"><p>If you don't have it yet, download the arduino USB driver (for example with the arduino IDE) <a href="http://arduino.cc/en/Main/Software">Download page</a></p>
+<h2>Windows</h2>
+<ol type="1">
+<li>Install all files from the package/Windows<ul>
+<li>python2.7</li>
+<li>pySerial</li>
+<li>pygame</li>
 </ul>
-<p>There are several features still to be implemented like creating diagrams and sending data continously. The latter can be emulated by sending text.</p>
-<h1>Usage</h1>
-<p>The library was designed to be as straighforward as possible, so all names should be self-explanatory and easy to understand. Nonetheless, a tutorial on how to use the library will beneift your understanding.</p>
-<h2>Getting started</h2>
-<h3>Initializing</h3>
-<p><a class="el" href="class_app_builder.html">AppBuilder</a>'s constructor is defined as follows:</p>
-<div class="fragment"><div class="line"><a class="code" href="class_app_builder.html">AppBuilder</a>(byte num_com, byte num_callbacks, String handshake, <span class="keywordtype">int</span> attempts);</div>
-</div><!-- fragment --><p>The arguments explained:</p><ul>
-<li><code>num_com</code> is the <em>number of components</em> you want to use</li>
-<li><code>num_callbacks</code> is the <em>number of callbacks</em> you want to use</li>
-<li><code>handshake</code> is the <em>handshake phrase</em> that's used to connect to a counterpart</li>
-<li><code>attempts</code> is the <em>number of attempts</em> made at doing a handshake</li>
+</li>
+<li>Setting the environment variables:<ul>
+<li>My Computer &gt; Properties &gt; Advanced System Settings &gt; Environment Variables</li>
+<li>Add as seen below</li>
 </ul>
-<p>An exmaple for initializing your <a class="el" href="class_app_builder.html">AppBuilder</a> object would look like this:</p>
-<div class="fragment"><div class="line"><a class="code" href="class_app_builder.html">AppBuilder</a> appb(12, 5, String(<span class="stringliteral">&quot;AVH\0&quot;</span>), 2048);</div>
-</div><!-- fragment --><p>You can store <em>12</em> components that have <em>5</em> callbacks. The connection phrase would be <em>AVH</em> (ArduinoVizHandshake) and the number for attempts <em>2048</em>.</p>
-<p>Next thing you need would be a function that's called when you're connected. That's probably your first encounter with gen_callback. It will be explained later on.</p>
-<h3>Building a layout</h3>
-<h2>Setting properties</h2>
-<h3>Setting the text of somehting</h3>
-<h2>Setting and receiving callbacks</h2>
-<h3>Setting callbacks</h3>
-<h3>Receiving callbacks and handling them</h3>
-<h1>Callbacks explained</h1>
-<h2>When to expect them</h2>
-<h1>General sequence of events</h1>
+</li>
+<li>For Kivy follow the instructions on <a href="http://kivy.org/docs/installation/installation-windows.html">Kivy Installation</a></li>
+<li>Start the <code>main.py</code> via the <code>kivy.bat</code></li>
+<li>Run the application</li>
+</ol>
+<table class="doxtable">
+<tr>
+<th>variable </th><th>value  </th></tr>
+<tr>
+<td><code>PYTHONHOME</code> </td><td>Your python directory (e.g. <code>C:\Python27</code> </td></tr>
+<tr>
+<td><code>PYTHONPATH</code> </td><td><code>yourdir\Lib</code> </td></tr>
+<tr>
+<td><code>Path</code> </td><td>PYTHONHOME;PYTHONPATH </td></tr>
+</table>
+<h2>Linux / MacOS</h2>
+<p><em>The following may require root rights:</em></p>
+<ol type="1">
+<li>If not already installed, setup <a href="https://www.python.org/download/">python</a> or with your packet manager</li>
+<li>Download <a href="https://pypi.python.org/pypi/pyserial">pySerial</a></li>
+<li>Change your directory to the extracted folder and run: <code>python setup.py install</code></li>
+<li>Setup <a href="http://kivy.org/#download">Kivy</a> (you will find detailed installation guides on this side)</li>
+<li>Run the python client with:<ul>
+<li><code>python main.py</code> for Linux</li>
+<li><code>kivy main.py</code> for MacOS</li>
+</ul>
+</li>
+</ol>
+<p>If there are still questions or hints to improve this tutorial, don't hesitate to let us know. Thank you. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 26 2014 12:52:00 for AppBuilder by
+    <li class="footer">Generated on Mon Oct 27 2014 21:33:39 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

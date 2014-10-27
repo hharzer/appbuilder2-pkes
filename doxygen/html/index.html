@@ -46,6 +46,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li class="current"><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,106 +101,47 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">AppBuilder Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="el" href="class_app_builder.html">AppBuilder</a> is a library that's designed to communicate with a compatible counterpart, e.g. a computer, an android phone or even another arduino handset.</p>
-<p>Currently supported are the following functions:</p><ul>
-<li>Connection detection (disconnction detection isn't currently supported due to restriction from arduino's serial library)</li>
-<li>Handshake to ensure that you're connected to a compatible and trustworhty counterpart</li>
-<li>Building layouts and sending them (You can nested layouts etc. The view, though, depends on your counterpart)</li>
-<li>Setting, receiving and executing callback for both buttons and textinputs (the latter also receives the string that as inside the textinput)</li>
-<li>Setting text</li>
-</ul>
-<p>There are several features still to be implemented like creating diagrams and sending data continously. The latter can be emulated by sending text.</p>
-<h1>Usage</h1>
-<p>The library was designed to be as straighforward as possible, so all names should be self-explanatory and easy to understand. Nonetheless, a tutorial on how to use the library will beneift your understanding.</p>
-<p><b>Please refrain from using Serial while also using the client software.</b></p>
-<h2>Getting started</h2>
-<h3>Initializing</h3>
-<p><a class="el" href="class_app_builder.html">AppBuilder</a>'s constructor is defined as follows:</p>
-<div class="fragment"><div class="line"><a class="code" href="class_app_builder.html">AppBuilder</a>(byte num_com, byte num_callbacks, String handshake, <span class="keywordtype">int</span> attempts);</div>
-</div><!-- fragment --><p>The arguments explained:</p><ul>
-<li><code>num_com</code> is the <em>number of components</em> you want to use</li>
-<li><code>num_callbacks</code> is the <em>number of callbacks</em> you want to use</li>
-<li><code>handshake</code> is the <em>handshake phrase</em> that's used to connect to a counterpart</li>
-<li><code>attempts</code> is the <em>number of attempts</em> made at doing a handshake</li>
-</ul>
-<p>An exmaple for initializing your <a class="el" href="class_app_builder.html">AppBuilder</a> object would look like this:</p>
-<div class="fragment"><div class="line"><a class="code" href="class_app_builder.html">AppBuilder</a> appb(12, 5, String(<span class="stringliteral">&quot;AVH\0&quot;</span>), 2048);</div>
-</div><!-- fragment --><p>You can store <em>12</em> components that have <em>5</em> callbacks. The connection phrase would be <em>AVH</em> (ArduinoVizHandshake) and the number for attempts <em>2048</em>.</p>
-<p>Next thing you need would be a function that's called when you're connected. That's probably your first encounter with <code>gen_callback</code>. It will be explained later on.</p>
-<p>The signature of <code>gen_callback</code> is defined as follows: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> void (*gen_callback)(uid8, <span class="keywordtype">char</span> *);</div>
-</div><!-- fragment --><p>Since there's no uid or character array involved, you can safely ignore both arguments. When your function gets called, you'll be able to create your layout.</p>
-<h3>Building a layout</h3>
-<p>Currently, there are four different UI elements available:</p><ul>
-<li>Layout</li>
-<li>Label</li>
-<li>Button</li>
-<li>Text input</li>
-</ul>
-<p>The last two offer a callback functionality which will be explained later on. For now, though, we want to create an UI and send it to the counterpart.</p>
-<p>First of all, we need a layout that acts as a container for the UI. The layout also specifies how all elements are sorted and arranged. However, the client organizes this for now. After we created a layout, we can add other components such as buttons and label. There's also the possibily of nesting layout to group and arrange them.</p>
-<div class="fragment"><div class="line">uid8 l = appb.start_layout();</div>
-<div class="line">t2 = appb.add_label();</div>
-<div class="line">uid8 b3 = appb.add_button();</div>
-<div class="line">uid8 b2 = appb.add_button();</div>
-<div class="line">uid8 t1 = appb.add_input();</div>
-<div class="line">uid8 b = appb.add_button();</div>
-<div class="line">b4 = appb.add_label();</div>
-<div class="line">appb.end_layout(l);</div>
-</div><!-- fragment --><p>Since you want to change properties and add callbacks later, you need to save all uids of component you want to modify. All function that add components to the layout will return the uid of the created element if it was successfull, otherwise ( for example when you've already added the specified amount of components ) it will return 0.</p>
-<p>Also, you probably noticed that, when you call <code>end_layout</code>, you have to pass a uid, namely the one of the layout you actually want to close.</p>
-<p>After you created all components and saved all necessary uids, you can send them:</p>
-<div class="fragment"><div class="line">appb.send_components();</div>
-</div><!-- fragment --><h2>Setting properties</h2>
-<h3>Setting the text of somehting</h3>
-<p>To change the text of any component (except the layout, everyone has a caption), you simply need to call <code>set_text</code> and pass the uid and the text.</p>
-<p>A call could look like this:</p>
-<div class="fragment"><div class="line">appb.set_text(t2, <span class="stringliteral">&quot;Sample Text 1&quot;</span>);</div>
-<div class="line">appb.set_text(b, <span class="stringliteral">&quot;on&quot;</span>);</div>
-<div class="line">appb.set_text(b2, <span class="stringliteral">&quot;off&quot;</span>);</div>
-<div class="line">appb.set_text(b3, <span class="stringliteral">&quot;Sample Text 2&quot;</span>);</div>
-<div class="line">appb.set_text(b4, <span class="stringliteral">&quot;Sample Text 3&quot;</span>);</div>
-</div><!-- fragment --><h2>Setting and receiving callbacks</h2>
-<p>To be able to react to callbacks, you need to assign ceratin components certain function.</p>
-<p>To set such a function, it is important to comply to <code>gen_callback</code>. The arguments are the id of the element that initiated the callback and a possible character array with the contents of an input. A function may look like this:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> turn_on(uid8 <span class="keywordtype">id</span>, <span class="keywordtype">char</span> *<span class="keywordtype">string</span>)</div>
-<div class="line">{</div>
-<div class="line">    digitalWrite(13, HIGH);</div>
-<div class="line">}</div>
-<div class="line"></div>
-<div class="line"><span class="keywordtype">void</span> turn_off(uid8 <span class="keywordtype">id</span>, <span class="keywordtype">char</span> *<span class="keywordtype">string</span>)</div>
-<div class="line">{</div>
-<div class="line">    digitalWrite(13, LOW);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p>As you probably noticed, this functions toggle the built-in led. we want to assign them to the buttons labeled <em>on</em> and <em>off</em>. Their ids are stored in <code>b</code> and <code>b2</code>.</p>
-<div class="fragment"><div class="line">appb.add_callback(b, turn_on);</div>
-<div class="line">appb.add_callback(b2, turn_off);</div>
-</div><!-- fragment --><p>Now, when you click the corresponding buttons you'll notice that you can now turn the led on and off. A text callback would look similarly:</p>
-<div class="fragment"><div class="line"><span class="keywordtype">void</span> text_callback(uid8 <span class="keywordtype">id</span>, <span class="keywordtype">char</span> *<span class="keywordtype">string</span>)</div>
-<div class="line">{</div>
-<div class="line">    appb.set_text(b4, <span class="keywordtype">string</span>);</div>
-<div class="line">}</div>
-</div><!-- fragment --><p>Keep in mind that the passed string is only valid within your callback. It is possible that it gets invalidated after leaving the function.</p>
-<div class="fragment"><div class="line">appb.add_callback(t1, text_callback);</div>
-</div><!-- fragment --><h1>Callbacks explained</h1>
-<p>You need to be aware of certain facts regarding callback handling. One of them was already mentioned above: strings are only valid wihtin the function. But there are other things you have to keep in mind.</p>
-<h2>When to expect them</h2>
-<p>Callbacks can only be recognized when you're arduino executes <code>serial_event</code>. Because of that, there's the possibility that callbacks get dropped if your computation take too long and you're sending too many callbacks from the client.</p>
+<div class="textblock"><p>ArduViz and <a class="el" href="class_app_builder.html">AppBuilder</a> are libraries intended to provide an easy way of vizualizing data and informations from your arduino with the help of your PC or Android phone (coming soon!). Additionally, you can interact with your arduino via GUI - inlcuding buttons, text inputs and labels - and send it commands or even control it.</p>
+<p>At its core, <a class="el" href="class_app_builder.html">AppBuilder</a> and ArduViz are designed to be as versatile as possible. It runs on any platform (Windows, Mac, Linux) and supports most arduinos. Furthermore, you're theoretically able to customize both libraries to your liking, e.g. adding, altering or removing elements at whim.</p>
+<p>This documentation is centered around the use of the serial connection between arduino and client.</p>
 <div class="image">
-<img src="Callback_Ablauf.png" alt="Callback_Ablauf.png"/>
-<div class="caption">
-Callback cycle</div></div>
-<p> The callback stack can hold up to <em>two</em> callbacks at the same time.</p>
-<h1>General sequence of events</h1>
-<div class="image">
-<img src="Allgemeiner_Ablauf.png" alt="Allgemeiner_Ablauf.png"/>
-<div class="caption">
-General process</div></div>
+<img src="ArduViz_Mac.png"  style="float: left; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"/>
+</div>
+ <div class="image">
+<img src="ArduViz_Win.png"  style="float: left; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"/>
+</div>
+ <div class="image">
+<img src="ArduViz_Linux.png"  style="float: left; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"/>
+</div>
+<p>The layout of your biult app will always look the same, regardless of your operating system. (Tested on Windows 7, Mac OS 10.10, Ubuntu 14.04)</p>
+<p>Also, the handling and usage will not differ between these platforms. However, you have to have the same preconidtions (listed below) installed on every system. The tutorial will explain what you need and where to get it.</p>
+<h2>Features</h2>
+<ul>
+<li>GUI powered by the <a href="http://kivy.org">Kivy</a> library (with huge potential of extensions, e.g.: diagram,progressbar ,pictures,...)</li>
+<li>Two connection modes: connection and auto reconnection</li>
+<li>Connect multiple arduinos to one PC</li>
+<li>Multi-platform (Linux,Windows,Mac OS)</li>
+<li>Well documented</li>
+<li>Easily extensible</li>
+<li>Fast start tutorial</li>
+</ul>
+<h2>What you need to start</h2>
+<ul>
+<li>Python 2.7</li>
+<li><a href="http://kivy.org">Kivy</a></li>
+<li><a href="http://pyserial.sourceforge.net">pySerial</a></li>
+</ul>
+<p>We have also made a detailed installtion guide <a href="md_documentation_appb_intro.html">here</a>.</p>
+<h3><a class="el" href="class_app_builder.html">AppBuilder</a>:</h3>
+<p>The functionality of the <a class="el" href="class_app_builder.html">AppBuilder</a> (arduino library) can be found <a href="md_documentation_installation.html">here</a>.</p>
+<h3>ArduViz:</h3>
+<p>The functionality of the ArduViz application (client) can be found <a href="md_documentation_arduviz_intro.html">here</a>. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 26 2014 15:20:38 for AppBuilder by
+    <li class="footer">Generated on Mon Oct 27 2014 21:33:39 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

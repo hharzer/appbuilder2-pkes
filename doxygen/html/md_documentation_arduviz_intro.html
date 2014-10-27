@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.8"/>
-<title>AppBuilder: Class Members - Variables</title>
+<title>AppBuilder: Introduction</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -46,8 +46,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
-      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li class="current"><a href="pages.html"><span>Related&#160;Pages</span></a></li>
+      <li><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
@@ -67,20 +67,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
       </li>
     </ul>
   </div>
-  <div id="navrow2" class="tabs2">
-    <ul class="tablist">
-      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
-      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
-      <li class="current"><a href="functions.html"><span>Class&#160;Members</span></a></li>
-    </ul>
-  </div>
-  <div id="navrow3" class="tabs2">
-    <ul class="tablist">
-      <li><a href="functions.html"><span>All</span></a></li>
-      <li><a href="functions_func.html"><span>Functions</span></a></li>
-      <li class="current"><a href="functions_vars.html"><span>Variables</span></a></li>
-    </ul>
-  </div>
 </div><!-- top -->
 <div id="side-nav" class="ui-resizable side-nav-resizable">
   <div id="nav-tree">
@@ -93,7 +79,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
 </div>
 <script type="text/javascript">
-$(document).ready(function(){initNavTree('functions_vars.html','');});
+$(document).ready(function(){initNavTree('md_documentation_arduviz_intro.html','');});
 </script>
 <div id="doc-content">
 <!-- window showing the filter options -->
@@ -110,16 +96,54 @@ $(document).ready(function(){initNavTree('functions_vars.html','');});
 </iframe>
 </div>
 
+<div class="header">
+  <div class="headertitle">
+<div class="title">Introduction </div>  </div>
+</div><!--header-->
 <div class="contents">
-&#160;<ul>
-<li>attempts
-: <a class="el" href="structhandshake__informations.html#a728e648cbfb9fb7a1cf1bc97493a976c">handshake_informations</a>
+<div class="textblock"><p>ArduViz is a python script, consisting of several classes to enable the visualisation of a received layout and the flow of data from an arduino. Furthermore it is the counterpart to the <a class="el" href="class_app_builder.html">AppBuilder</a> library.</p>
+<p>Currently supported are the following functions:</p><ul>
+<li>Connection to a selected port (if the port can't be accessed you get an error message)</li>
+<li>Two different connection modes:<ul>
+<li>simple connection (connect to port, at disconnect return to the main menue)</li>
+<li>connection with autoreconnect (connect to port, at disconnect wait for a new available connection on that port and then reconnect.)</li>
+</ul>
 </li>
-<li>callback
-: <a class="el" href="structcallback__dictionary.html#ae5bf2254961e10c73b9ef12dbab36440">callback_dictionary</a>
+<li>Receiving different layouts and display them. The layouts can include:<ul>
+<li>Buttons</li>
+<li>Labels</li>
+<li>TextInputs</li>
+<li>Other Layouts</li>
+</ul>
+</li>
+<li>Nested layouts, because layouts can contain layouts itself too</li>
+<li>Flexibly and fast interaction with your arduion by callbacks</li>
+<li>Running multiple arduinos on one host device</li>
+<li>Cross platform (Windows,Linux,MacOS, Android under development)</li>
+</ul>
+<h1>Usage</h1>
+<p>The ArduViz usage is hold very easy, if you followed the installation instructions. Just execute the [main.py]() and you will get to the main menue.</p>
+<div class="image">
+<img src="menu.png" alt="menu.png"/>
+</div>
+<p>Here you can select the port (depending on your os) and select a connection mode. That are the both already explained in the introduction.</p>
+<ul>
+<li>"Connect."<ul>
+<li>The "Connect" button is a good choice if you are unsure which port your arduino is connected to.You can also use this mode, if you want to load a new sketch to your arduino, after the connection. So it is useful if you are currently working with your sketch. And just need a one time test.</li>
+</ul>
+</li>
+<li>"Connect with auto reconnection."<ul>
+<li>Use this mode when you are going to do several tests with the same code. You are able to test different actions of your system, just by turn out your usb wire and stuck it in again. The port will keep the same and ArduViz will connect to it again automatically.</li>
+</ul>
 </li>
 </ul>
-</div><!-- contents -->
+<p>That's it. The ArduViz script will do the rest for you like:</p><ul>
+<li>Connecting</li>
+<li>Parsing</li>
+<li>Displaying the widget tree.</li>
+</ul>
+<p>If you seek a deeper understanding of how the script works take a look at the ArduViz dokumentation. You will also find possibilites for how and where to extend the code, e.g. for a diagram. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->

@@ -1,0 +1,51 @@
+Ardu\+Viz is a python script, consisting of several classes to enable the visualisation of a received layout and the flow of data from an arduino. Furthermore it is the counterpart to the \hyperlink{class_app_builder}{App\+Builder} library.
+
+Currently supported are the following functions\+:
+\begin{DoxyItemize}
+\item Connection to a selected port (if the port can't be accessed you get an error message)
+\item Two different connection modes\+:
+\begin{DoxyItemize}
+\item simple connection (connect to port, at disconnect return to the main menue)
+\item connection with autoreconnect (connect to port, at disconnect wait for a new available connection on that port and then reconnect.)
+\end{DoxyItemize}
+\item Receiving different layouts and display them. The layouts can include\+:
+\begin{DoxyItemize}
+\item Buttons
+\item Labels
+\item Text\+Inputs
+\item Other Layouts
+\end{DoxyItemize}
+\item Nested layouts, because layouts can contain layouts itself too
+\item Flexibly and fast interaction with your arduion by callbacks
+\item Running multiple arduinos on one host device
+\item Cross platform (Windows,Linux,Mac\+O\+S, Android under development)
+\end{DoxyItemize}
+
+\section*{Usage}
+
+The Ardu\+Viz usage is hold very easy, if you followed the installation instructions. Just execute the \mbox{[}main.\+py\mbox{]}() and you will get to the main menue.
+
+
+
+Here you can select the port (depending on your os) and select a connection mode. That are the both already explained in the introduction.
+
+
+\begin{DoxyItemize}
+\item \char`\"{}\+Connect.\char`\"{}
+\begin{DoxyItemize}
+\item The \char`\"{}\+Connect\char`\"{} button is a good choice if you are unsure which port your arduino is connected to.\+You can also use this mode, if you want to load a new sketch to your arduino, after the connection. So it is useful if you are currently working with your sketch. And just need a one time test.
+\end{DoxyItemize}
+\item \char`\"{}\+Connect with auto reconnection.\char`\"{}
+\begin{DoxyItemize}
+\item Use this mode when you are going to do several tests with the same code. You are able to test different actions of your system, just by turn out your usb wire and stuck it in again. The port will keep the same and Ardu\+Viz will connect to it again automatically.
+\end{DoxyItemize}
+\end{DoxyItemize}
+
+That's it. The Ardu\+Viz script will do the rest for you like\+:
+\begin{DoxyItemize}
+\item Connecting
+\item Parsing
+\item Displaying the widget tree.
+\end{DoxyItemize}
+
+If you seek a deeper understanding of how the script works take a look at the Ardu\+Viz dokumentation. You will also find possibilites for how and where to extend the code, e.\+g. for a diagram. 
