@@ -50,6 +50,10 @@ typedef void (*gen_callback)(uid8, char *);
 
 Since there's no uid or character array involved, you can safely ignore both arguments. When your function gets called, you'll be able to create your layout.
 
+### Adding all necessary prerequistes
+
+You have to add the `refresh` method of your AppBuilder instance to your `loop` function. Also, to read the serial port correctly, AppBuilder's `serial_event` function must be called after entering `serialEvent` of your arduino device.
+
 ### Building a layout
 
 Currently, there are four different UI elements available:

@@ -101,11 +101,11 @@ $(document).ready(function(){initNavTree('md_documentation_arduviz_intro.html','
 <div class="title">Introduction </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>ArduViz is a python script, consisting of several classes to enable the visualisation of a received layout and the flow of data from an arduino. Furthermore it is the counterpart to the <a class="el" href="class_app_builder.html">AppBuilder</a> library.</p>
+<div class="textblock"><p>ArduViz is a python script to enable the visualisation of received layouts and the flow of data from an arduino. Furthermore it is the counterpart to the <a class="el" href="class_app_builder.html">AppBuilder</a> library.</p>
 <p>Currently supported are the following functions:</p><ul>
 <li>Connection to a selected port (if the port can't be accessed you get an error message)</li>
 <li>Two different connection modes:<ul>
-<li>simple connection (connect to port, at disconnect return to the main menue)</li>
+<li>simple connection (connect to port, at disconnect return to the main menu)</li>
 <li>connection with autoreconnect (connect to port, at disconnect wait for a new available connection on that port and then reconnect.)</li>
 </ul>
 </li>
@@ -113,42 +113,43 @@ $(document).ready(function(){initNavTree('md_documentation_arduviz_intro.html','
 <li>Buttons</li>
 <li>Labels</li>
 <li>TextInputs</li>
-<li>Other Layouts</li>
+<li>Other nested layouts</li>
 </ul>
 </li>
-<li>Nested layouts, because layouts can contain layouts itself too</li>
-<li>Flexibly and fast interaction with your arduion by callbacks</li>
-<li>Running multiple arduinos on one host device</li>
-<li>Cross platform (Windows,Linux,MacOS, Android under development)</li>
+<li>Flexible and fast interaction with your arduino by callbacks</li>
+<li>Connecting multiple arduinos with one host device</li>
+<li>Cross-platform (Windows, Linux, MacOS, Android <em>under development</em>)</li>
 </ul>
 <h1>Usage</h1>
-<p>The ArduViz usage is hold very easy, if you followed the installation instructions. Just execute the [main.py]() and you will get to the main menue.</p>
+<p>ArduViz' usage is intended to be as straightforward as possible. You simply have to follow the given <a href="md_documentation_installation.html">instructions</a> on how to install all needed packages and you're ready to go.</p>
+<p>You'll be greeted by the main menu.</p>
 <div class="image">
 <img src="menu.png" alt="menu.png"/>
-</div>
-<p>Here you can select the port (depending on your os) and select a connection mode. That are the both already explained in the introduction.</p>
+<div class="caption">
+Main menu</div></div>
+<p> Here you can select the port (depending on your operating system) and select a connection mode.</p>
 <ul>
-<li>"Connect."<ul>
-<li>The "Connect" button is a good choice if you are unsure which port your arduino is connected to.You can also use this mode, if you want to load a new sketch to your arduino, after the connection. So it is useful if you are currently working with your sketch. And just need a one time test.</li>
+<li><code>Connect</code><ul>
+<li>The client makes an attempt to connect to the specified port. If the connection isn't available or otherwise not usable, the attempt will fail and you'll return to the main menu.</li>
 </ul>
 </li>
-<li>"Connect with auto reconnection."<ul>
-<li>Use this mode when you are going to do several tests with the same code. You are able to test different actions of your system, just by turn out your usb wire and stuck it in again. The port will keep the same and ArduViz will connect to it again automatically.</li>
+<li><code>Connect with auto reconnection</code><ul>
+<li>Use this mode when you are going to do several using the exact same port. This, however, will block the serial connection.</li>
 </ul>
 </li>
 </ul>
 <p>That's it. The ArduViz script will do the rest for you like:</p><ul>
-<li>Connecting</li>
-<li>Parsing</li>
-<li>Displaying the widget tree.</li>
+<li>Connecting and handshake</li>
+<li>Reading input, displaying elements</li>
+<li>Sending and receiving data.</li>
 </ul>
-<p>If you seek a deeper understanding of how the script works take a look at the ArduViz dokumentation. You will also find possibilites for how and where to extend the code, e.g. for a diagram. </p>
+<p>If you seek a deeper understanding of how the script works, take a look at the ArduViz dokumentation. You will also find possibilites for how and where to extend the code, e.g. for a diagram. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 27 2014 21:33:39 for AppBuilder by
+    <li class="footer">Generated on Mon Oct 27 2014 21:51:59 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>
