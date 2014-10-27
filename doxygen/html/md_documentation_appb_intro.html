@@ -125,10 +125,12 @@ $(document).ready(function(){initNavTree('md_documentation_appb_intro.html','');
 </ul>
 <p>An exmaple for initializing your <a class="el" href="class_app_builder.html">AppBuilder</a> object would look like this:</p>
 <div class="fragment"><div class="line"><a class="code" href="class_app_builder.html">AppBuilder</a> appb(12, 5, String(<span class="stringliteral">&quot;AVH\0&quot;</span>), 2048);</div>
-</div><!-- fragment --><p>You can store <em>12</em> components that have <em>5</em> callbacks. The connection phrase would be <em>AVH</em> (ArduVizHandshake) and the number for attempts <em>2048</em>.</p>
+</div><!-- fragment --><p>You can store <em>12</em> components that have <em>5</em> callbacks. The connection phrase would be <em>AVH</em> (ArduVizHandshake) and the number for attempts <em>2048</em>. Kepp in mind that <em>every layout counts for two elements</em>.</p>
 <p>Next thing you need would be a function that's called when you're connected. That's probably your first encounter with <code>gen_callback</code>. It will be explained later on.</p>
 <p>The signature of <code>gen_callback</code> is defined as follows: </p><div class="fragment"><div class="line"><span class="keyword">typedef</span> void (*gen_callback)(uid8, <span class="keywordtype">char</span> *);</div>
 </div><!-- fragment --><p>Since there's no uid or character array involved, you can safely ignore both arguments. When your function gets called, you'll be able to create your layout.</p>
+<h3>Adding all necessary prerequistes</h3>
+<p>You have to add the <code>refresh</code> method of your <a class="el" href="class_app_builder.html">AppBuilder</a> instance to your <code>loop</code> function. Also, to read the serial port correctly, <a class="el" href="class_app_builder.html">AppBuilder</a>'s <code>serial_event</code> function must be called after entering <code>serialEvent</code> of your arduino device.</p>
 <h3>Building a layout</h3>
 <p>Currently, there are four different UI elements available:</p><ul>
 <li>Layout</li>
@@ -200,7 +202,7 @@ General process</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Oct 27 2014 21:51:59 for AppBuilder by
+    <li class="footer">Generated on Mon Oct 27 2014 23:17:08 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>
