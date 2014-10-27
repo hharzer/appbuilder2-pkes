@@ -39,7 +39,7 @@ An exmaple for initializing your [AppBuilder](@ref AppBuilder) object would look
 AppBuilder appb(12, 5, String("AVH\0"), 2048);
 ~~~~~~~~~~~~~~~
 
-You can store _12_ components that have _5_ callbacks. The connection phrase would be _AVH_ (ArduVizHandshake) and the number for attempts _2048_.
+You can store _12_ components that have _5_ callbacks. The connection phrase would be _AVH_ (ArduVizHandshake) and the number for attempts _2048_. Kepp in mind that _every layout counts for two elements_.
 
 Next thing you need would be a function that's called when you're connected. That's probably your first encounter with `gen_callback`. It will be explained later on.
 
