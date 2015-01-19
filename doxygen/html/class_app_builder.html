@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ArduinoViz Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AppBuilder
    &#160;<span id="projectnumber">2.0rc1</span>
@@ -93,7 +94,7 @@ $(document).ready(function(){initNavTree('class_app_builder.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -354,7 +355,6 @@ Public Member Functions</h2></td></tr>
 
 <p>Sends components to client. </p>
 <p>Sends the array according to the protocol to the client </p>
-<p>&lt; Save a component (type, id) and terminate it with a \0 </p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ Public Member Functions</h2></td></tr>
 <p>This includes performing the handshake. Nothing will happen if the AppBuilder::handshake wasn't successful</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">onc</td><td>The function that will be called on connection. typdef ::gen_callback </td></tr>
+    <tr><td class="paramname">onc</td><td>The function that will be called on connection. </td></tr>
   </table>
   </dd>
 </dl>
@@ -481,8 +481,8 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>/Users/holgerharzer/GitHub/appbuilder/<a class="el" href="_app_builder_8h_source.html">AppBuilder.h</a></li>
-<li>/Users/holgerharzer/GitHub/appbuilder/AppBuilder.cpp</li>
+<li><a class="el" href="_app_builder_8h_source.html">AppBuilder.h</a></li>
+<li>AppBuilder.cpp</li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
@@ -490,7 +490,7 @@ Public Member Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="class_app_builder.html">AppBuilder</a></li>
-    <li class="footer">Generated on Sun Oct 26 2014 12:58:50 for AppBuilder by
+    <li class="footer">Generated on Mon Jan 19 2015 13:10:14 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

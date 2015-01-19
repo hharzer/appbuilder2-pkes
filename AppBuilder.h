@@ -117,7 +117,7 @@ public:
      * @brief Sets the function that's called when you're successfully connection
      * @details This includes performing the handshake. Nothing will happen if the AppBuilder::handshake wasn't successful
      *
-     * @param onc The function that will be called on connection. typdef ::gen_callback
+     * @param onc The function that will be called on connection.
      */
     void set_onconnect(gen_callback onc);
 
@@ -144,7 +144,7 @@ public:
     /**
      * @brief Ends the given layout
      * @details Closes the layout with the given id
-     * 
+     *
      * @param layout The id of the layout that is to be closed
      * @return id on success, 0 otherwise
      */
@@ -172,21 +172,21 @@ public:
     /**
      * @brief Sets the text of a given components
      * @details Sends text to client synchronous
-     * 
+     *
      * @param id id of the widget
      * @param text The new text
-     * 
+     *
      * @return id on succes, 0 otherwise
      */
-    uid8 set_text(uid8 id, char* text);
+    uid8 set_text(uid8 id, char *text);
 
     /**
      * @brief Adds a callback to a component
-     * @details 
-     * 
+     * @details
+     *
      * @param id The component
      * @param callback The corresponding component
-     * 
+     *
      * @return id on success, 0 otherwise
      */
     uid8 add_callback(uid8 id, gen_callback callback);

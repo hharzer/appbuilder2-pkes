@@ -28,6 +28,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
+  <td id="projectlogo"><img alt="Logo" src="ArduinoViz Logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">AppBuilder
    &#160;<span id="projectnumber">2.0rc1</span>
@@ -86,7 +87,7 @@ $(document).ready(function(){initNavTree('index.html','');});
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -100,12 +101,47 @@ $(document).ready(function(){initNavTree('index.html','');});
 <div class="title">AppBuilder Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-</div><!-- contents -->
+<div class="textblock"><p>ArduViz and <a class="el" href="class_app_builder.html">AppBuilder</a> are libraries intended to provide an easy way of vizualizing data and informations from your arduino with the help of your PC or Android phone (coming soon!). Additionally, you can interact with your arduino via GUI - inlcuding buttons, text inputs and labels - and send it commands or even control it.</p>
+<p>At its core, <a class="el" href="class_app_builder.html">AppBuilder</a> and ArduViz are designed to be as versatile as possible. It runs on any platform (Windows, Mac, Linux) and supports most arduinos. Furthermore, you're theoretically able to customize both libraries to your liking, e.g. adding, altering or removing elements at whim.</p>
+<p>This documentation is centered around the use of the serial connection between arduino and client.</p>
+<div class="image">
+<img src="ArduViz_Mac.png"  style="float: left; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"/>
+</div>
+ <div class="image">
+<img src="ArduViz_Win.png"  style="float: left; height: 15em; margin-right: 1%; margin-bottom: 0.5em;"/>
+</div>
+ <div class="image">
+<img src="ArduViz_Linux.png"  style="float: left; height: 15em; margin-right:x 1%; margin-bottom: 0.5em;"/>
+</div>
+<p>The layout of your biult app will always look the same, regardless of your operating system. (Tested on Windows 7, Mac OS 10.10, Ubuntu 14.04)</p>
+<p>Also, the handling and usage will not differ between these platforms. However, you have to have the same preconidtions (listed below) installed on every system. The tutorial will explain what you need and where to get it.</p>
+<h2>Features</h2>
+<ul>
+<li>GUI powered by the <a href="http://kivy.org">Kivy</a> library (with huge potential of extensions, e.g.: diagram,progressbar ,pictures,...)</li>
+<li>Two connection modes: connection and auto reconnection</li>
+<li>Connect multiple arduinos to one PC</li>
+<li>Multi-platform (Linux,Windows,Mac OS)</li>
+<li>Well documented</li>
+<li>Easily extensible</li>
+<li>Fast start tutorial</li>
+</ul>
+<h2>What you need to start</h2>
+<ul>
+<li>Python 2.7</li>
+<li><a href="http://kivy.org">Kivy</a></li>
+<li><a href="http://pyserial.sourceforge.net">pySerial</a></li>
+</ul>
+<p>We have also made a detailed installtion guide <a href="md_documentation_installation.html">here</a>.</p>
+<h3><a class="el" href="class_app_builder.html">AppBuilder</a>:</h3>
+<p>The functionality of the <a class="el" href="class_app_builder.html">AppBuilder</a> (arduino library) can be found <a href="md_documentation_appb_intro.html">here</a>.</p>
+<h3>ArduViz:</h3>
+<p>The functionality of the ArduViz application (client) can be found <a href="md_documentation_arduviz_intro.html">here</a>. </p>
+</div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Oct 26 2014 12:58:50 for AppBuilder by
+    <li class="footer">Generated on Mon Jan 19 2015 13:10:14 for AppBuilder by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

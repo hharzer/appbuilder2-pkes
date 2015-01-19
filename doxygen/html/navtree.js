@@ -1,13 +1,16 @@
 var NAVTREE =
 [
   [ "AppBuilder", "index.html", [
-    [ "Introduction", "md___users_holgerharzer__git_hub_appbuilder_documentation_appb_intro.html", null ],
+    [ "AppBuilder", "md_documentation_appb_intro.html", null ],
+    [ "ArduViz", "md_documentation_arduviz_intro.html", null ],
+    [ "Installation", "md_documentation_installation.html", null ],
     [ "Classes", null, [
       [ "Class List", "annotated.html", "annotated" ],
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", null ],
-        [ "Functions", "functions_func.html", null ]
+        [ "Functions", "functions_func.html", null ],
+        [ "Variables", "functions_vars.html", null ]
       ] ]
     ] ],
     [ "Files", null, [
