@@ -5,21 +5,25 @@ If you don't have it yet, download the arduino USB driver (for example with the 
 
 ## Windows
 
-1. Install all files from the package/Windows 
-    - python2.7
-    - pySerial
-    - pygame
-2. Setting the environment variables:
+1. Install the following:
+    - [python2.7](https://www.python.org/downloads/windows/)
+    - [pySerial](http://pyserial.sourceforge.net)
+    - [pygame](http://www.pygame.org/download.shtml)
+2. Setting the environment and user variables:
     - My Computer > Properties > Advanced System Settings > Environment Variables
     - Add as seen below
 3. For Kivy follow the instructions on [Kivy Installation](http://kivy.org/docs/installation/installation-windows.html)
 4. Start the `main.py` via the `kivy.bat`
 5. Run the application
 
-| variable     | value                                     |
+ 
+|user variable | value                                     |
 |--------------|-------------------------------------------|
 | `PYTHONHOME` | Your python directory (e.g. `C:\Python27` |
 | `PYTHONPATH` | `yourdir\Lib`                             |
+
+|environment variable| value                               |
+|--------------|-------------------------------------------|
 | `Path`       | PYTHONHOME;PYTHONPATH					   |
 
 ## Linux / MacOS

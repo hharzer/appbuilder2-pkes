@@ -28,7 +28,7 @@ Also, the handling and usage will not differ between these platforms. However, y
 
 ## What you need to start
 - Python 2.7
-- [Kivy](http://kivy.org)
+- [Kivy 1.8.0](http://kivy.org)
 - [pySerial](http://pyserial.sourceforge.net)
 
 We have also made a detailed installtion guide [here](md_documentation_installation.html).
